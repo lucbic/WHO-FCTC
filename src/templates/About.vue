@@ -96,7 +96,7 @@
 			    		<div class="row" style="background-color:#fff;">
 				    		<div class="col-xs-8">
 				    			<br><br>
-				    			<p style="display:block; padding:10px 0 30px 50px;">The Expert Group’s mandate was continued in 2014, and in 2016, the establishment of this Toolkit was proposed as a practical resource to help stakeholders choose the most appropriate measures for strengthening their implementation of Article 19.</p>
+				    			<p style="display:block; padding:10px 0 30px 50px;">{{ $t('about.how.card') }}</p>
 				    		</div>
 				    		<div class="col-xs-4 text-right">
 			              		<img src="../assets/img/eg_toolkit.png" alt="" style="margin:-30px 0"/>
