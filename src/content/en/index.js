@@ -1,5 +1,7 @@
-import Home from './Home'
+import app from './App'
+import home from './Home'
 
 export default {
-  home: Home
+  app,
+  home
 }
