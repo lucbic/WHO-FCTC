@@ -1,0 +1,26 @@
+.tree {
+	&Container {
+		position: relative;
+	}
+	&Item {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+	}
+	&Image {
+		background-image: url("assets/img/sprite.png");
+		background-position: left 0;
+		background-repeat: no-repeat;
+		height: 120px;
+		&.img-S1Q1 {
+			background-position-y: 0px;
+		}
+		&.img-S1Q2 {
+			background-position-y: -120px;
+		}
+		&.img-S1Q3 {
+			background-position-y: -240px;
+		}
+	}
+}

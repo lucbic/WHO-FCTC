@@ -1,0 +1,75 @@
+.aniline {
+
+	&__container {
+		position: absolute;
+		pointer-events:none;
+		overflow: hidden;
+		width:200px;
+		transform:translateX(-40px);
+		min-height: calc(100% - 100%);
+
+		transition:min-height 1s ease-in;
+
+		&.open {
+			min-height: calc(100% + 100px);
+		}
+
+		&.no {
+			.aniline__yesno {
+				width: 185px;
+			}
+		}
+	}
+	&__yesno {
+		position: absolute;
+		left:30px;
+		top:0px;
+		background-image: url(assets/img/horz.png);
+		background-repeat: repeat-x;
+		background-position: left 12px;
+		transform:translateX(-27px);
+		height: 39px;
+		width: 67px;
+		margin-top:5px;
+
+		transition:width 0.2s ease-in-out;
+
+		&:before, &:after {
+			content: "";
+			height:39px;
+			width:20px;
+			background-image: url(assets/img/curve.png);
+			position: absolute;
+			top:0px;
+		}
+
+		&:before {
+			left:0px;
+			background-position: left top;
+		}
+
+		&:after {
+			right:0px;
+			background-position: right top;
+		}
+	}
+	&__updown {
+		position: absolute;
+		left: 0px;
+		top: 43px;
+		background-image: url(assets/img/vert.png);
+		background-repeat: repeat-Y;
+		background-position: left 10px;
+		height: calc(100% - 60px);
+		min-height:50px;
+		width: 20px;
+
+		i {
+			font-size: 25px;
+			position: absolute;
+			top:calc(100% - 5px);
+			left:-1px;
+			color:#3bb4a0;
+		}
+	}
+}

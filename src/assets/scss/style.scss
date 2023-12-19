@@ -1,0 +1,96 @@
+// These are the custom styles for the site
+@import "mixins";
+@import "core";
+@import "fonts";
+
+@import "blocks/header";
+@import "blocks/overlay";
+@import "blocks/animations";
+@import "blocks/questions";
+@import "blocks/scenario";
+@import "blocks/aniline";
+@import "blocks/treee";
+
+@import "blocks/hidden_text";
+@import "blocks/map";
+
+@import "blocks/footer";
+@import "blocks/home";
+@import "blocks/print";
+
+body {
+	/*margin-bottom:300px;*/
+	.container {
+		min-width: 800px;
+	}
+	&.noscroll {
+		overflow: hidden;
+	}
+
+	#content {
+		min-height: calc(100vh - 45px);
+		margin-bottom:100px;
+
+		&.resources, &.contact {
+			margin-bottom:-30px;
+		}
+
+		&.contact {
+			background-color: #e1ecf0;
+			min-height: calc(100vh - 245px);
+		}
+	}
+
+	#outer {
+		opacity: 0;
+		transition: opacity 0.3s ease-in-out 0.2s;
+		&.loaded {
+			opacity:1;
+		}
+	}
+
+	img {
+		max-width: 100%;
+		opacity: 1;
+		transition: opacity 0.3s;
+	}
+
+	.echo {
+		opacity: 0;
+		transition: opacity 0.2s ease-in-out;
+		width:auto;
+		height:auto;
+		
+	}
+	img.loaded {
+		transition: opacity 0.2s ease-in-out;
+		opacity:1;
+		width:auto!important;
+		height:auto!important;
+	}
+
+	img[src="/dist/blank.gif"] { 
+		opacity:0; 
+	}
+
+	h3 {
+		font-size: 2em;
+	}
+
+	
+	.p30 {
+		padding:30px;
+	}
+	
+	.p40 {
+		padding:40px;
+	}
+
+	.mt20 {
+		margin-top:20px;
+	}
+
+	.rel {
+		position: relative;
+	}
+}

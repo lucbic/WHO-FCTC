@@ -1,0 +1,134 @@
+.div-bottom {
+	margin-top:100px;
+}
+
+.questionheader {
+	span {
+		font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+		font-weight: bold;
+		letter-spacing: 1px;
+		font-size:16px;
+		color: #bec3cc;
+		display: block;
+		margin-top: 30px;
+	}
+
+	h2 {
+		font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+		color: #282427;
+		margin-bottom: 30px;
+		font-size: 2.25em;
+	}
+}
+
+.explanations {
+
+	h3 {
+		font-size: 22px;
+		letter-spacing: 1px;
+		color:#2b4655;
+		margin-bottom: 20px;
+		margin-top:25px;
+	}
+
+	font-size: 1.25em;
+	line-height: 1.55em;
+	font-weight: 300;
+	color:#282427;
+	letter-spacing: 0.05em;
+
+	a {
+		color: #3bb4a0;
+		font-weight: bold;
+		letter-spacing: 1px;
+		border-bottom: 1px solid #3bb4a0;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+
+.question_choices {
+	img.questionIcon {
+		max-width: 140%;
+		position: absolute;
+		top:50%;
+		left:50%;
+		transform:translateY(-50%) translateX(-50%);
+		text-align: center;
+		opacity:0;
+
+		transition:opacity 0.2s;
+
+		&.visible {
+			opacity:1;
+		}
+	}
+	.questionIcon__container {
+		max-width: 100%;
+		position: relative;
+		/*background-color: #e9f2f5;*/
+		border-radius: 200px;
+		height:160px;
+		width:160px;
+		margin-top:30px;
+	}
+
+	.question_yn {
+		text-align: center;
+		position: relative;
+		.instructions{
+			position: absolute;
+			bottom: -70px;
+			right: -100px;
+			max-height: 120px;
+		}
+		a {
+			display: inline-block;
+			width:60px;
+			height:60px;
+			font-size: 25px;
+			line-height: 60px;
+			color:#fff;
+			border-radius: 30px;
+			background-color: #a4acbb;
+			margin-top:5px;
+			transition:background 0.2s;
+
+			&.yes {
+				background-color: #3bb4a0;
+				&.selected {
+					background-color: darken(#3bb4a0, 10%);
+				}
+				&:hover {
+					background-color: darken(#3bb4a0, 5%);
+				}
+			}
+
+			&.no {
+				background-color: #d27069;
+				&.selected {
+					background-color: darken(#d27069, 15%);
+				}
+
+				&:hover {
+					background-color: darken(#d27069, 10%);
+				}
+			}
+
+			i {
+				transform:scale(1);
+				transition:all 0.2s ease-out;
+				text-shadow: 0px 0px 0px rgba(0,0,0,0.3);
+				cursor: pointer;
+			}
+
+			&:hover {
+				i {
+					transform:scale(1.4);
+					text-shadow: 3px 3px 2px rgba(0,0,0,0.15);
+				}
+			}
+		}
+	}
+}
