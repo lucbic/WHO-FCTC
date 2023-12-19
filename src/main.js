@@ -19,8 +19,8 @@ const router = new VueRouter({
 })
 
 const i18n = new VueI18n({
-  locale: 'en', // set locale
-  messages, // set locale messages
+  locale: 'en',
+  messages,
 })
 
 var vm = new Vue({
