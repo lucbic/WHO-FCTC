@@ -9,8 +9,8 @@
 		    		<div class="col-xs-7">
 		    			<div class="p30">
 		    				<br>
-			    			<h1>About the Toolkit</h1>
-		    				<p style="font-size:1.5em;">This Toolkit is designed to present ways that individuals and groups can overcome challenges in implementing Article 19 of the WHO FCTC and bringing claims against the tobacco industry to court.</p>
+			    			<h1>{{ $t('about.hero.title') }}</h1>
+		    				<p style="font-size:1.5em;">{{ $t('about.hero.description') }}</p>
 		    			</div>
 		    		</div>
 		    	</div>
