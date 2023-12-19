@@ -8,15 +8,15 @@
 	    		<div class="col-xs-7">
 	    			<div class="p30">
 		    			<h1>{{ $t('home.hero.title') }}</h1>
-		    			<p class="mt20" style="font-size:1.4em">Your interactive guide to taking legal action against the tobacco industry.</p>
-		    			<router-link to="/about" class="button mt20" style="font-size:1.4em">Read More</router-link>
+		    			<p class="mt20" style="font-size:1.4em">{{ $t('home.hero.description') }}</p>
+		    			<router-link to="/about" class="button mt20" style="font-size:1.4em">{{ $t('home.hero.cta') }}</router-link>
 	    			</div>
 	    		</div>
 	    	</div>
 		</div>
 		<div class="p30 rel sidebanner-padding" style="background-color:#e1ecf0; margin:30px 0; padding-bottom:40px;">
 			<div class="sidebanner sidebanner--white">
-				<h2>How to use the Toolkit</h2>
+				<h2>{{ $t('home.howTo.title') }}</h2>
 			</div>
 		    <div class="container">
 		    	<div class="row">
@@ -25,8 +25,8 @@
 		    				<div class="img__container">
               					<img src="../assets/img/home_s1.png" alt="" />
 		    				</div>
-			    			<h4>Step 1</h4>
-			    			<p>Select a scenario or click BEGIN to find out which one you fit into with a few simple questions.</p>
+			    			<h4>{{ $t('home.howTo.step.one.title') }}</h4>
+			    			<p>{{ $t('home.howTo.step.one.description') }}</p>
 		    			</div>
 		    		</div>
 		    		<div class="col-xs-4">
@@ -34,8 +34,8 @@
 		    				<div class="img__container">
               					<img src="../assets/img/home_s2.png" alt="" />
 		    				</div>
-			    			<h4>Step 2</h4>
-			    			<p>Let the Toolkit guide you through the questions and examples that best suit your context.</p>
+			    			<h4>{{ $t('home.howTo.step.two.title') }}</h4>
+								<p>{{ $t('home.howTo.step.two.description') }}</p>
 		    			</div>
 		    		</div>
 		    		<div class="col-xs-4">
@@ -43,8 +43,8 @@
 		    				<div class="img__container">
               					<img src="../assets/img/home_s3.png" alt="" />
 		    				</div>
-			    			<h4>Step 3</h4>
-			    			<p>Use the decision tree based on your answers to plot your path to successful litigation.</p>
+			    			<h4>{{ $t('home.howTo.step.three.title') }}</h4>
+								<p>{{ $t('home.howTo.step.three.description') }}</p>
 		    			</div>
 		    		</div>
 		    	</div>
@@ -54,8 +54,8 @@
 		    <div class="container">
 		    	<div class="row">
 		    		<div class="col-xs-8 col-xs-offset-2 text-center">
-		    			<h3>Where to start</h3><br>
-		    			<p>This interactive Toolkit is a guide for tobacco victims, health care providers, insurers, civil society groups and lawyers who want to take legal action against the tobacco industry. We've identified three main litigation scenarios that can help.</p>
+		    			<h3>{{ $t('home.whereToStart.title') }}</h3><br>
+		    			<p>{{ $t('home.whereToStart.description') }}</p>
 		    		</div>
 		    	</div>
 			</div>
@@ -66,13 +66,13 @@
 		    		</div>
 		    		<div class="col-xs-5 col-sm-offset-0 col-lg-4 col-lg-offset-1 text-center">
 		    			<div class="start-block p30">
-			    			<p>If you <strong>don't know</strong> which litigation scenario is right for your jurisdiction we’ll help you find out.</p>
-			    			<a href="#" class="button mt20" @click.prevent="showpop = !showpop">Begin</a>
+			    			<p v-html="$t('home.whereToStart.dontKnow.description')"/>
+			    			<a href="#" class="button mt20" @click.prevent="showpop = !showpop">{{ $t('home.whereToStart.dontKnow.cta') }}</a>
 		    			</div>
 		    		</div>
 		    		<div class="col-xs-5 col-xs-offset-2 col-lg-4 col-lg-offset-2 text-center">
 		    			<div class="start-block p30">
-			    			<p>If you <strong>do know</strong> which litigation scenario is right for your jurisdiction, click on the scenario below.</p>
+								<p v-html="$t('home.whereToStart.doKnow.description')"/>
 			    		</div>
 		    		</div>
 		    	</div>
@@ -85,22 +85,22 @@
 		    		<div class="col-xs-4 text-center">
 		    			<router-link to="/scenario/1">
 	              			<img src="../assets/img/home_s2_1.png" alt="" />
-			    			<h3>Scenario 1</h3>
-			    			<p>Healthcare Cost Recovery</p>
+			    			<h3>{{ $t('home.whereToStart.doKnow.scenario.one.title') }}</h3>
+			    			<p v-html="$t('home.whereToStart.doKnow.scenario.one.description')" />
 			    		</router-link>
 		    		</div>
 		    		<div class="col-xs-4 text-center">
 		    			<router-link to="/scenario/2">
 	              			<img src="../assets/img/home_s2_2.png" alt="" />
-			    			<h3>Scenario 2</h3>
-			    			<p>Access to Justice on a<br/>Collective+Individual Basis</p>
+								<h3>{{ $t('home.whereToStart.doKnow.scenario.two.title') }}</h3>
+								<p v-html="$t('home.whereToStart.doKnow.scenario.two.description')" />
 			    		</router-link>
 		    		</div>
 		    		<div class="col-xs-4 text-center">
 		    			<router-link to="/scenario/3">
 	              			<img src="../assets/img/home_s2_3.png" alt="" />
-			    			<h3>Scenario 3</h3>
-			    			<p>Public Interest Litigation</p>
+			    			<h3>{{ $t('home.whereToStart.doKnow.scenario.three.title') }}</h3>
+								<p v-html="$t('home.whereToStart.doKnow.scenario.three.description')" />
 			    		</router-link>
 		    		</div>
 		    	</div>
@@ -111,8 +111,8 @@
 		    <div class="container">
 		    	<div class="row">
 		    		<div class="col-xs-7">
-		    			<h3>Why you need the toolkit</h3><br/>
-		    			<p>It is challenging to bring claims against the tobacco industry to court, and even more so to win them. There are many reasons for this, but examples of obstacles to successful tobacco litigation have a number of features in common. This Toolkit presents ways to address these challenges. </p>
+		    			<h3>{{ $t('home.why.title') }}</h3><br/>
+		    			<p>{{ $t('home.why.description') }}</p>
 		    		</div>
 		    		<div class="col-xs-5 text-center">
 	              			<img src="../assets/img/h_why.png" alt="" />
@@ -124,30 +124,34 @@
 		    <div class="container">
 		    	<div class="row">
 		    		<div class="col-xs-5">
-		    			<h3>Contact us</h3>
+		    			<h3>{{ $t('home.contact.title') }}</h3>
 
 		    			<div class="hp-cbox" >
-			    			<h4>Secretariat of the WHO Framework Convention on Tobacco Control</h4>
+			    			<h4>{{ $t('home.contact.name') }}</h4>
 							<p>
-								World Health Organization
+								{{ $t('home.contact.WHO') }}
 							</p>
 							<p>
-								Avenue Appia 20, 1211 Geneva 27, Switzerland
+								{{ $t('home.contact.address') }}
 							</p>
-							<p>Tel: + 41 22 791 5043<br />
-							Fax: + 41 22 791 5830</p>
+							<p>
+								{{ $t('home.contact.phone') }}
+								<br />
+								{{ $t('home.contact.fax') }}
+							</p>
 
-							<p>Email: <a href="mailto:fctcsecretariat@who.int">fctcsecretariat@who.int</a></p>
+							<p v-html="$t('home.contact.mail')"/>
 						</div>
 
 		    		</div>
 		    		<div class="col-xs-6 col-xs-offset-1">
-		    			<h3>What is the WHO FCTC?</h3><br>
-		    			<p>The WHO Framework Convention on Tobacco Control (WHO FCTC) is the first international treaty negotiated under the auspices of WHO. It was adopted by the World Health Assembly on 21 May 2003 and entered into force on 27 February 2005. It has since become one of the most rapidly and widely embraced treaties in United Nations history.
-</p><p>
-The WHO FCTC was developed in response to the globalization of the tobacco epidemic and is an evidence-based treaty that reaffirms the right of all people to the highest standard of health. The Convention represents a milestone for the promotion of public health and provides new legal dimensions for international health cooperation.</p><br>
-
-		    			<a href="https://fctc.who.int/who-fctc/overview" target="_blank" class="button">Read More</a>
+		    			<h3>{{ $t('home.whatIsIt.title') }}</h3><br>
+		    			<p>{{ $t('home.whatIsIt.description.firstP') }}</p>
+		    			<p>{{ $t('home.whatIsIt.description.secondP') }}</p>
+							<br/>
+		    			<a href="https://fctc.who.int/who-fctc/overview" target="_blank" class="button">
+								{{ $t('home.whatIsIt.cta') }}
+							</a>
 		    		</div>
 		    	</div>
 			</div>
@@ -164,13 +168,13 @@ The WHO FCTC was developed in response to the globalization of the tobacco epide
 		              			<img src="../assets/img/pop-img.png" alt="" style="max-height:150px; margin:10px;" />
 							</div>
 							<div class="col-xs-8 text-left">
-								<h2>Does health care cost recovery legislation exist?</h2>
+								<h2>{{ $t('home.popup.question.one.title') }}</h2>
 							</div>
 						</div>
 					</div>
 					<div class="pop-exp text-left">
-						<span class="heading">Explanation</span>
-						<p>Health care cost recovery legislation is a powerful way for governments and health care providers to bring claims directly against the industry, which helps ensure the full financial costs of tobacco related harm can be recovered, and not just the losses suffered by individual victims.</p>
+						<span class="heading">{{ $t('home.popup.question.one.heading') }}</span>
+						<p>{{ $t('home.popup.question.one.description') }}</p>
 					</div>
 					<ul class="pop-circles">
 						<li><img class="homeInstructionImage" src="../assets/img/downRightArrow.png"></li>
@@ -186,13 +190,13 @@ The WHO FCTC was developed in response to the globalization of the tobacco epide
 		              			<img src="../assets/img/pop-img.png" alt="" style="max-height:150px; margin:10px;" />
 							</div>
 							<div class="col-xs-8 text-left">
-								<h2 style="max-width:400px;">Do class action procedures exist?</h2>
+								<h2 style="max-width:400px;">{{ $t('home.popup.question.two.title') }}</h2>
 							</div>
 						</div>
 					</div>
 					<div class="pop-exp text-left">
-						<span class="heading">Explanation</span>
-						<p>The most significant successes in civil liability claims against the tobacco industry have been achieved via class action procedures where a class of claimants suffering from a tobacco-related disease considered common issues about the tobacco companies’ conduct in relation to the group, finding the industry liable on a number of grounds.</p>
+						<span class="heading">{{ $t('home.popup.question.two.heading') }}</span>
+						<p>{{ $t('home.popup.question.two.description') }}</p>
 					</div>
 					<ul class="pop-circles">
 						<li><router-link to="/scenario/2" class="choice"><i class="fa fa-check"></i></router-link></li>
