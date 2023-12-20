@@ -27,7 +27,7 @@ export default {
       firstP: 'Nombre de représentants des pouvoirs publics, de prestataires de soins de santé et de personnes atteintes de maladies liées au tabagisme ont de solides revendications à faire valoir contre l’industrie du tabac. Cependant, les procédures judiciaires liées au tabac s’avèrent difficiles : obstacles techniques et juridiques pour les plaignants et systèmes juridiques quant à eux incapables de remédier au déséquilibre de pouvoir entre l’industrie et ceux qu’elle a lésés.',
       secondP: 'Cela étant dit, il existe des exemples de procès gagnés aux Amériques, en Europe et en Australasie. Il est également envisageable d’adapter aux procédures judiciaires liées au tabac des pratiques exemplaires novatrices dans d’autres domaines juridiques. Cette boîte à outils vise à rassembler et à organiser ces informations à l’intention des utilisateurs, ainsi qu’à les aider à appliquer l’article 19 de la manière la plus appropriée à leur situation.'
     },
-    quote: 'L’article 19 affirme clairement que les actions en justice visant à établir la responsabilité constituent un moyen important de lutte contre le tabagisme. Toutefois, les mesures prises pour réparer le préjudice causé par l’industrie du tabac n’ont bien souvent pas de précédent et les systèmes juridiques doivent s’adapter."'
+    quote: 'L’article 19 affirme clairement que les actions en justice visant à établir la responsabilité constituent un moyen important de lutte contre le tabagisme. Toutefois, les mesures prises pour réparer le préjudice causé par l’industrie du tabac n’ont bien souvent pas de précédent et les systèmes juridiques doivent s’adapter.»'
   },
 
   how: {
