@@ -193,7 +193,7 @@
               <ul>
                 <li><a href="http://untobaccocontrol.org/impldb/article-19/" target="_blank">WHO FCTC Implementation Database</a></li>
                 <li><a href="http://www.who.int/fctc/cop/cop7/Documentation-Decisions/en/ " target="_blank">WHO FCTC Conference of the Parties (COP) Decisions</a></li>
-                <li><a href="https://www.industrydocumentslibrary.ucsf.edu/tobacco/ " target="_blank">Truth Tobacco Industry Documents: ‘Industry Documents Library’ (UCSF)</a></li>
+                <li><a href="https://www.industrydocumentslibrary.ucsf.edu/tobacco/" target="_blank">Truth Tobacco Industry Documents: ‘Industry Documents Library’ (UCSF)</a></li>
                 <li><a href="https://www.tobaccocontrollaws.org/" target="_blank">Campaign for Tobacco-Free Kids: Tobacco Control Laws and Litigation</a></li>
                 <li><a href="https://www.corporateaccountability.org/tobacco/" target="_blank">Corporate Accountability International</a></li>
               </ul>
@@ -252,7 +252,7 @@
             <!-- Questions -->
             <div class="col-sm-8" style="padding-bottom:300px;">
                 <transition-group name="list" tag="div">
-              <div v-for="(question, index) in questions" v-bind:key="index" >
+              <div v-for="(question, index) in questions" :key="question.title" >
                 <div class="row">
                   <div class="col-sm-3" v-if="question.hasImage">
                     <div class="row question_choices">

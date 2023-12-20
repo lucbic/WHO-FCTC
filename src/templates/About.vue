@@ -47,7 +47,7 @@
 	    			<p>{{ $t('about.why.description.secondP') }}</p>
 	    		</div>
 	    		<div class="col-xs-6">
-	              	<img src="../assets/img/7.gif" data-echo="/dist/7.gif" width="455" height="227" class="echo">
+	              	<img src="../assets/img/7.gif" width="455" height="227">
 	    			<br>
 	    			<blockquote>
 	    				{{ $t('about.why.quote') }}
@@ -67,22 +67,22 @@
 		    			<br>
 		    		</div>
 		    		<div class="col-xs-3">
-	              		<img src="../assets/img/8.gif" data-echo="/dist/8.gif" class="echo">
+	              		<img src="../assets/img/8.gif">
 		    			<span class="numbd">1</span>
 		    			<p v-html="$t('about.how.item.one')" />
 		    		</div>
 		    		<div class="col-xs-3">
-	              		<img src="../assets/img/9.gif" data-echo="/dist/9.gif" class="echo">
+	              		<img src="../assets/img/9.gif">
 		    			<span class="numbd">2</span>
 		    			<p v-html="$t('about.how.item.two')" />
 		    		</div>
 		    		<div class="col-xs-3">
-	              		<img src="../assets/img/11.gif" data-echo="/dist/11.gif" class="echo">
+	              		<img src="../assets/img/11.gif">
 		    			<span class="numbd">3</span>
 		    			<p v-html="$t('about.how.item.three')" />
 		    		</div>
 		    		<div class="col-xs-3">
-	              		<img src="../assets/img/10.gif" data-echo="/dist/10.gif" class="echo">
+	              		<img src="../assets/img/10.gif">
 		    			<span class="numbd">4</span>
 		    			<p v-html="$t('about.how.item.four')" />
 		    		</div>
@@ -145,7 +145,7 @@
 export default {
   	name: 'about',
 	created: function () {
-	  this.$parent.$emit('scrollup', 'test');
+	  this.$emit('scrollup', 'test');
 
 
 		echo.init({
