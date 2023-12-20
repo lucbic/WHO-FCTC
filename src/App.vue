@@ -102,6 +102,9 @@ export default {
             const { path } = this.$route
             this.$i18n.locale = lang;
             this.$router.push({ path, query: { lang } })
+            const htmlTag = document.querySelector('html')
+            htmlTag.dir = lang === 'ar' ? 'rtl' : 'ltr'
+            htmlTag.lang = lang
         },
 
         '$route' (to) {

@@ -321,6 +321,17 @@
 	}
 }
 
+html[dir="rtl"] {
+	#home-page, #about-page, #resources-page, #scenarios-page {
+		.ticklist, .tickle ul {
+			li:before {
+				right: unset;
+				left: calc(100% + 12px);
+			}
+		}
+	}
+}
+
 .cbox {
 	background-color: rgba(255,255,255,0.5);
 	display: block;
