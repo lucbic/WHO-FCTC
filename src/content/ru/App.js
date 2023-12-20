@@ -4,7 +4,7 @@ export default {
       title: 'На главную'
     },
     about: {
-      title: 'Об инструментарии'
+      title: 'Сценарии'
     },
     scenarios: {
       title: 'Сценарии',
@@ -27,19 +27,19 @@ export default {
       title: 'Ресурсы'
     },
     contactUs: {
-      title: 'Контактные данные'
+      title: 'Контакт'
     },
   },
 
   footer: {
     about: {
-      title: 'Об инструментарии'
+      title: 'Сценарии'
     },
     resources: {
       title: 'Ресурсы'
     },
     contact: {
-      title: 'Контактные данные'
+      title: 'Контакт'
     },
   }
 }

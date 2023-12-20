@@ -3,10 +3,14 @@
     <header>
       <div class="container">
         <div class="row">
-          <div class="col-sm-3">
-            <router-link to="/"><div class="logo-here"></div></router-link>
+          <div class="col-sm-4 logo-col">
+            <router-link class="logo-here hp30" to="/">
+              <span class="text">
+                <strong>Tobacco Control</strong> Toolkit
+              </span>
+            </router-link>
           </div>
-          <div class="col-sm-9">
+          <div class="col-sm-8 header-options">
             <ul class="main-menu">
               <li><router-link to="/">{{ $t('app.header.home.title') }}</router-link></li>
               <li><router-link to="/about">{{ $t('app.header.about.title') }}</router-link></li>
@@ -35,6 +39,8 @@
               <li><router-link to="/resources">{{ $t('app.header.resources.title') }}</router-link></li>
               <li><router-link to="/contact">{{ $t('app.header.contactUs.title') }}</router-link></li>
             </ul>
+
+            <language-selector v-model="language" />
           </div>
         </div>
       </div>
@@ -75,44 +81,73 @@
 </template>
 
 <script>
-export default {
-  name: 'app',
-  data () {
-    return {
-      routeid: "ddd"
-    }
-  },
-  methods: {
-    scrollTo: function() {
-        var self = this;
-        var thisindex = "#content"
-        var cancelScroll
+import LanguageSelector from './components/LanguageSelector.vue';
 
-        var options = {
-          container: "body",
-          duration: 500,
-          easing: "ease-in-out",
-          offset:-80,
-          cancelable: true,
-          onCancel: false,
-          x: false,
-          y: true
-        }
-        setTimeout(function() {
-          cancelScroll = self.$scrollTo(thisindex, 500, options)
-        }, 300);
+export default {
+    name: 'app',
+
+    components: {
+      LanguageSelector
     },
-  },
-  created: function() {
-    this.$on('scrollup', function(value){
-      this.scrollTo()
-    });
-  },
-  computed: {
-    routename: function() {
-      return this.$route.name
-    }
-  }
+
+    data() {
+        return {
+            routeid: "ddd",
+            language: '',
+        };
+    },
+
+    watch: {
+        language (lang) {
+            const { path } = this.$route
+            this.$i18n.locale = lang;
+            this.$router.push({ path, query: { lang } })
+        },
+
+        '$route' (to) {
+            if (to.query.lang)
+                this.language = to.query.lang;
+        }
+    },
+
+    methods: {
+        scrollTo: function () {
+            var self = this;
+            var thisindex = "#content";
+            var cancelScroll;
+            var options = {
+                container: "body",
+                duration: 500,
+                easing: "ease-in-out",
+                offset: -80,
+                cancelable: true,
+                onCancel: false,
+                x: false,
+                y: true
+            };
+            setTimeout(function () {
+                cancelScroll = self.$scrollTo(thisindex, 500, options);
+            }, 300);
+        },
+    },
+
+    created: function () {
+        const { lang } = this.$route.query
+
+        if (lang) this.language = lang,
+
+        this.$on('scrollup', function (value) {
+            this.scrollTo();
+        });
+    },
+
+    computed: {
+        routename: function () {
+            return this.$route.name;
+        }
+    },
+
+    components: { LanguageSelector }
 }
 </script>
 

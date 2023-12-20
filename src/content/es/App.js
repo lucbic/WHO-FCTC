@@ -4,10 +4,10 @@ export default {
       title: 'Inicio'
     },
     about: {
-      title: 'Información general'
+      title: 'Acerca de'
     },
     scenarios: {
-      title: 'Posibles situaciones',
+      title: 'Escenarios',
       scenario: {
         one: {
           title: 'Posible situación 1:',
@@ -27,7 +27,7 @@ export default {
       title: 'Recursos'
     },
     contactUs: {
-      title: 'Contacto'
+      title: 'Contáctanos'
     },
   },
 

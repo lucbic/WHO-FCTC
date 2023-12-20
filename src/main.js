@@ -14,7 +14,7 @@ Vue.use(VueScrollTo)
 Vue.use(VueI18n)
 
 const router = new VueRouter({
-    history:false,
+    history: false,
     routes: routes
 })
 
