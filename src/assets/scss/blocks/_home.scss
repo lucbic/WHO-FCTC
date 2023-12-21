@@ -69,24 +69,33 @@
 
 	.sidebanner {
 		position: absolute;
-		left:0px;
-		top:70px;
+		left: 0px;
+		top: 70px;
 		border-left: 400px solid #9dc2d0;
 		border-left-width: calc((100vw - 1250px) / 2);
-		padding:0 40px ;
+		padding: 0 40px ;
 
 		&-padding {
-			padding-top:180px;
+			padding-top: 180px;
 		}
 
 		h2 {
 			margin: 0px;
-			padding:10px;
+			padding: 10px;
 		}
 
 		&--white {
 			background-color: #9dc2d0;
 			color: #fff;
+		}
+
+		&.-inverted {
+			left: unset;
+			right: 0px;
+			border-left: unset;
+			border-left-width: unset;
+			border-right: 400px solid #9dc2d0;
+			border-right-width: calc((100vw - 1250px) / 2);
 		}
 	}
 
