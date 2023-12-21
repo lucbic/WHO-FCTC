@@ -3,13 +3,7 @@
     <header>
       <div class="container">
         <div class="row">
-          <div class="col-sm-4 logo-col">
-            <router-link class="logo-here hp30" to="/">
-              <span class="text">
-                <strong>Tobacco Control</strong> Toolkit
-              </span>
-            </router-link>
-          </div>
+          <org-logo v-if="!isArabic" class="col-sm-4 " />
 
           <div class="col-sm-8 header-options">
             <ul class="main-menu">
@@ -31,6 +25,8 @@
 
             <language-selector v-model="language" />
           </div>
+
+          <org-logo v-if="isArabic" class="col-sm-4 " />
         </div>
       </div>
     </header>
@@ -75,126 +71,126 @@
 
 <script>
 import LanguageSelector from './components/LanguageSelector.vue';
+import OrgLogo from './components/OrgLogo.vue';
 
 export default {
-    name: 'app',
+  name: 'app',
 
-    components: {
-      LanguageSelector
+  components: {
+    OrgLogo,
+    LanguageSelector
+  },
+
+  data: () => ({
+    routeid: "ddd",
+    language: '',
+  }),
+
+  watch: {
+    language (lang) {
+      const { path } = this.$route;
+      this.$i18n.locale = lang;
+      this.$router.push({ path, query: { lang } });
+      const htmlTag = document.querySelector('html');
+      htmlTag.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      htmlTag.lang = lang;
     },
 
-    data: () => ({
-      routeid: "ddd",
-      language: '',
-    }),
+    '$route' (to) {
+      if (to.query.lang)
+        this.language = to.query.lang;
+    }
+  },
 
-    watch: {
-      language (lang) {
-        const { path } = this.$route;
-        this.$i18n.locale = lang;
-        this.$router.push({ path, query: { lang } });
-        const htmlTag = document.querySelector('html');
-        htmlTag.dir = lang === 'ar' ? 'rtl' : 'ltr';
-        htmlTag.lang = lang;
-      },
-
-      '$route' (to) {
-        if (to.query.lang)
-          this.language = to.query.lang;
-      }
+  methods: {
+    scrollTo () {
+      var thisindex = "#content";
+      var options = {
+          container: "body",
+          duration: 500,
+          easing: "ease-in-out",
+          offset: -80,
+          cancelable: true,
+          onCancel: false,
+          x: false,
+          y: true
+      };
+      setTimeout(() => {
+        this.$scrollTo(thisindex, 500, options);
+      }, 300);
     },
 
-    methods: {
-      scrollTo () {
-        var thisindex = "#content";
-        var options = {
-            container: "body",
-            duration: 500,
-            easing: "ease-in-out",
-            offset: -80,
-            cancelable: true,
-            onCancel: false,
-            x: false,
-            y: true
-        };
-        setTimeout(() => {
-          this.$scrollTo(thisindex, 500, options);
-        }, 300);
-      },
+    isActive (item) {
+      if (item.children)
+        return item.children.some(child => child.to.name === this.$route.name);
 
-      isActive (item) {
-        if (item.children)
-          return item.children.some(child => child.to.name === this.$route.name);
+      return this.$route.name === item.to.name;
+    }
+  },
 
-        return this.$route.name === item.to.name;
-      }
+  created () {
+    const { lang } = this.$route.query
+
+    if (lang) this.language = lang,
+
+    this.$on('scrollup', function (value) {
+      this.scrollTo();
+    });
+  },
+
+  computed: {
+    routename () {
+      return this.$route.name;
     },
 
-    created () {
-      const { lang } = this.$route.query
-
-      if (lang) this.language = lang,
-
-      this.$on('scrollup', function (value) {
-        this.scrollTo();
-      });
+    isArabic () {
+      return this.language === 'ar';
     },
 
-    computed: {
-      routename () {
-        return this.$route.name;
-      },
+    headerContent () {
+      const items = [
+        {
+          label: this.$t('app.header.home.title'),
+          to: { name: 'home' }
+        },
+        {
+          label: this.$t('app.header.about.title'),
+          to: { name: 'about' }
+        },
+        {
+          label: this.$t('app.header.scenarios.title'),
+          to: { name: 'scenario' },
+          children: [
+            {
+              label: this.$t('app.header.scenarios.scenario.one.title'),
+              to: { name: 'scenarios', params: { id: 1 } },
+              description: this.$t('app.header.scenarios.scenario.one.description')
+            },
+            {
+              label: this.$t('app.header.scenarios.scenario.two.title'),
+              to: { name: 'scenarios', params: { id: 2 } },
+              description: this.$t('app.header.scenarios.scenario.two.description')
+            },
+            {
+              label: this.$t('app.header.scenarios.scenario.three.title'),
+              to: { name: 'scenarios', params: { id: 3 } },
+              description: this.$t('app.header.scenarios.scenario.three.description')
+            }
+          ]
+        },
+        {
+          label: this.$t('app.header.resources.title'),
+          to: { name: 'resources' }
+        },
+        {
+          label: this.$t('app.header.contactUs.title'),
+          to: { name: 'contact' }
+        }
+      ];
 
-      isArabic () {
-        return this.language === 'ar';
-      },
-
-      headerContent () {
-        const items = [
-          {
-            label: this.$t('app.header.home.title'),
-            to: { name: 'home' }
-          },
-          {
-            label: this.$t('app.header.about.title'),
-            to: { name: 'about' }
-          },
-          {
-            label: this.$t('app.header.scenarios.title'),
-            to: { name: 'scenario' },
-            children: [
-              {
-                label: this.$t('app.header.scenarios.scenario.one.title'),
-                to: { name: 'scenarios', params: { id: 1 } },
-                description: this.$t('app.header.scenarios.scenario.one.description')
-              },
-              {
-                label: this.$t('app.header.scenarios.scenario.two.title'),
-                to: { name: 'scenarios', params: { id: 2 } },
-                description: this.$t('app.header.scenarios.scenario.two.description')
-              },
-              {
-                label: this.$t('app.header.scenarios.scenario.three.title'),
-                to: { name: 'scenarios', params: { id: 3 } },
-                description: this.$t('app.header.scenarios.scenario.three.description')
-              }
-            ]
-          },
-          {
-            label: this.$t('app.header.resources.title'),
-            to: { name: 'resources' }
-          },
-          {
-            label: this.$t('app.header.contactUs.title'),
-            to: { name: 'contact' }
-          }
-        ];
-
-        return this.isArabic ? items.reverse() : items;
-      }
-    },
-
-    components: { LanguageSelector }
+      return this.isArabic ? items.reverse() : items;
+    }
+  }
 }
 </script>
 

@@ -211,19 +211,14 @@
 
 <script>
 export default {
-	name: 'app',
-	data () {
-		return {
-		  showpop: false,
-		  popq: 1,
-		}
-	},
-  	methods: {
-	},
-	computed: {
+	name: 'home',
 
-	},
-	created: function () {
+	data: () => ({
+		showpop: false,
+		popq: 1,
+	}),
+
+	created () {
 	  this.$parent.$emit('scrollup', 'test');
 	}
 }
