@@ -2,7 +2,7 @@
   <div>
     <app-header />
 
-    <div id="content" :class="[routename]">
+    <div id="content" :class="[ routename ]">
       <transition name="fade">
         <router-view />
       </transition>
@@ -44,9 +44,13 @@ export default {
   },
 
   created () {
-    this.$on('scrollup', function (value) {
-      this.scrollTo();
-    });
+    this.$on('scrollup', this.scrollTo);
+  },
+
+  computed: {
+    routename () {
+      return this.$route.name;
+    }
   }
 }
 </script>
