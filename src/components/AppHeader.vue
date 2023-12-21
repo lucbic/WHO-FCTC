@@ -225,7 +225,7 @@ export default {
             padding: 15px 25px;
           }
 
-          a>span {
+          a > span {
             font-weight: 300;
             display: block;
           }

@@ -1,5 +1,5 @@
 <<template>
-  <div class="language-selector">
+  <div class="language-selector" :class="{ '-inverted': isArabic }">
     <img class="icon" src="../assets/img/icons/translation.svg" />
 
     <span class="selected">{{ selected }}</span>
@@ -75,13 +75,16 @@ export default {
       const lang = this.$options.languages.find(lang => lang.value === this.value);
 
       return lang ? lang.label : 'Language';
+    },
+
+    isArabic () {
+      return this.value === 'ar';
     }
   }
 }
 </script>
 
 <style lang="scss">
-
 .language-selector {
   position: relative;
   width: 150px;
@@ -100,6 +103,11 @@ export default {
     height: 20px;
     margin-right: 10px;
     justify-self: flex-start;
+  }
+
+  &.-inverted > .icon {
+    margin-right: 0;
+    margin-left: 10px;
   }
 
   > .selected {
@@ -134,6 +142,11 @@ export default {
   > .chevron {
     filter: brightness(0) invert(1);
     margin-left: 5px;
+  }
+
+  &.-inverted > .chevron {
+    margin-left: 0;
+    margin-right: 5px;
   }
 }
 </style>
