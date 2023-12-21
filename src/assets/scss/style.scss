@@ -3,7 +3,6 @@
 @import "core";
 @import "fonts";
 
-@import "blocks/header";
 @import "blocks/overlay";
 @import "blocks/animations";
 @import "blocks/questions";
@@ -19,6 +18,8 @@
 @import "blocks/print";
 
 body {
+	padding-top: 50px;
+
 	/*margin-bottom:300px;*/
 	.container {
 		min-width: 800px;
