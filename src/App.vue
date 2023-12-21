@@ -10,34 +10,23 @@
               </span>
             </router-link>
           </div>
+
           <div class="col-sm-8 header-options">
             <ul class="main-menu">
-              <li><router-link to="/">{{ $t('app.header.home.title') }}</router-link></li>
-              <li><router-link to="/about">{{ $t('app.header.about.title') }}</router-link></li>
-              <li><router-link to="/scenario" class="parent">{{ $t('app.header.scenarios.title') }}</router-link>
-                  <ul class="dropdown">
-                    <li>
-                      <router-link to="/scenario/1">
-                        {{ $t('app.header.scenarios.scenario.one.title') }} 
-                        <span>{{ $t('app.header.scenarios.scenario.one.description') }} </span>
-                      </router-link>
-                    </li>
-                    <li>
-                      <router-link to="/scenario/2">
-                        {{ $t('app.header.scenarios.scenario.two.title') }} 
-                        <span>{{ $t('app.header.scenarios.scenario.two.description') }} </span>
-                      </router-link>
-                    </li>
-                    <li>
-                      <router-link to="/scenario/3">
-                        {{ $t('app.header.scenarios.scenario.three.title') }} 
-                        <span>{{ $t('app.header.scenarios.scenario.three.description') }} </span>
-                      </router-link>
-                    </li>
-                  </ul>
+              <li v-for="(item) in headerContent">
+                <router-link :to="item.to" :class="{ '-active': isActive(item) }">
+                  {{ item.label }}
+                </router-link>
+
+                <ul v-if="item.children" class="dropdown">
+                  <li v-for="child in item.children">
+                    <router-link :to="child.to">
+                      {{ child.label }}
+                      <span>{{ child.description }}</span>
+                    </router-link>
+                  </li>
+                </ul>
               </li>
-              <li><router-link to="/resources">{{ $t('app.header.resources.title') }}</router-link></li>
-              <li><router-link to="/contact">{{ $t('app.header.contactUs.title') }}</router-link></li>
             </ul>
 
             <language-selector v-model="language" />
@@ -45,11 +34,13 @@
         </div>
       </div>
     </header>
+
     <div id="content" :class="[routename]">
       <transition name="fade">
         <router-view></router-view>
       </transition>
     </div>
+
     <footer>
       <div class="container">
         <div class="row">
@@ -58,6 +49,7 @@
               <img src="./assets/img/FCTC_logo.png" alt="">
             </div>
           </div>
+
           <div class="col-xs-3">
             <div class="p30 footer-social">
               <i class="fa fa-facebook"></i>
@@ -65,6 +57,7 @@
               <i class="fa fa-youtube-play"></i>
             </div>
           </div>
+
           <div class="col-xs-5">
             <div class="p30 footer-links">
               <ul class="list-inline">
@@ -90,64 +83,115 @@ export default {
       LanguageSelector
     },
 
-    data() {
-        return {
-            routeid: "ddd",
-            language: '',
-        };
-    },
+    data: () => ({
+      routeid: "ddd",
+      language: '',
+    }),
 
     watch: {
-        language (lang) {
-            const { path } = this.$route
-            this.$i18n.locale = lang;
-            this.$router.push({ path, query: { lang } })
-            const htmlTag = document.querySelector('html')
-            htmlTag.dir = lang === 'ar' ? 'rtl' : 'ltr'
-            htmlTag.lang = lang
-        },
+      language (lang) {
+        const { path } = this.$route;
+        this.$i18n.locale = lang;
+        this.$router.push({ path, query: { lang } });
+        const htmlTag = document.querySelector('html');
+        htmlTag.dir = lang === 'ar' ? 'rtl' : 'ltr';
+        htmlTag.lang = lang;
+      },
 
-        '$route' (to) {
-            if (to.query.lang)
-                this.language = to.query.lang;
-        }
+      '$route' (to) {
+        if (to.query.lang)
+          this.language = to.query.lang;
+      }
     },
 
     methods: {
-        scrollTo: function () {
-            var self = this;
-            var thisindex = "#content";
-            var cancelScroll;
-            var options = {
-                container: "body",
-                duration: 500,
-                easing: "ease-in-out",
-                offset: -80,
-                cancelable: true,
-                onCancel: false,
-                x: false,
-                y: true
-            };
-            setTimeout(function () {
-                cancelScroll = self.$scrollTo(thisindex, 500, options);
-            }, 300);
-        },
+      scrollTo () {
+        var thisindex = "#content";
+        var options = {
+            container: "body",
+            duration: 500,
+            easing: "ease-in-out",
+            offset: -80,
+            cancelable: true,
+            onCancel: false,
+            x: false,
+            y: true
+        };
+        setTimeout(() => {
+          this.$scrollTo(thisindex, 500, options);
+        }, 300);
+      },
+
+      isActive (item) {
+        if (item.children)
+          return item.children.some(child => child.to.name === this.$route.name);
+
+        return this.$route.name === item.to.name;
+      }
     },
 
-    created: function () {
-        const { lang } = this.$route.query
+    created () {
+      const { lang } = this.$route.query
 
-        if (lang) this.language = lang,
+      if (lang) this.language = lang,
 
-        this.$on('scrollup', function (value) {
-            this.scrollTo();
-        });
+      this.$on('scrollup', function (value) {
+        this.scrollTo();
+      });
     },
 
     computed: {
-        routename: function () {
-            return this.$route.name;
-        }
+      routename () {
+        return this.$route.name;
+      },
+
+      isArabic () {
+        return this.language === 'ar';
+      },
+
+      headerContent () {
+        const items = [
+          {
+            label: this.$t('app.header.home.title'),
+            to: { name: 'home' }
+          },
+          {
+            label: this.$t('app.header.about.title'),
+            to: { name: 'about' }
+          },
+          {
+            label: this.$t('app.header.scenarios.title'),
+            to: { name: 'scenario' },
+            children: [
+              {
+                label: this.$t('app.header.scenarios.scenario.one.title'),
+                to: { name: 'scenarios', params: { id: 1 } },
+                description: this.$t('app.header.scenarios.scenario.one.description')
+              },
+              {
+                label: this.$t('app.header.scenarios.scenario.two.title'),
+                to: { name: 'scenarios', params: { id: 2 } },
+                description: this.$t('app.header.scenarios.scenario.two.description')
+              },
+              {
+                label: this.$t('app.header.scenarios.scenario.three.title'),
+                to: { name: 'scenarios', params: { id: 3 } },
+                description: this.$t('app.header.scenarios.scenario.three.description')
+              }
+            ]
+          },
+          {
+            label: this.$t('app.header.resources.title'),
+            to: { name: 'resources' }
+          },
+          {
+            label: this.$t('app.header.contactUs.title'),
+            to: { name: 'contact' }
+          }
+        ];
+
+        return this.isArabic ? items.reverse() : items;
+      }
     },
 
     components: { LanguageSelector }
