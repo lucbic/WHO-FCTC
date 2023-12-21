@@ -1,5 +1,9 @@
 export default {
   header: {
+    logo: {
+      highlight: '烟草控制',
+      normal: '工具包',
+    },
     home: {
       title: '主页'
     },

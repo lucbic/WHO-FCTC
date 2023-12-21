@@ -1,5 +1,9 @@
 export default {
   header: {
+    logo: {
+      highlight: 'مجموعة الأدوات ',
+      normal: 'المتعلقة بمكافحة التبغ',
+    },
     home: {
       title: 'الصفحة الرئيسية'
     },

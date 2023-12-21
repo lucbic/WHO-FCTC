@@ -1,5 +1,9 @@
 export default {
   header: {
+    logo: {
+      highlight: 'Boîte à Outils',
+      normal: ' Pour la Lutte Antitabac',
+    },
     home: {
       title: 'Accueil'
     },

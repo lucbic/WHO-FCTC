@@ -4,7 +4,7 @@
 
     <div id="content" :class="[routename]">
       <transition name="fade">
-        <router-view></router-view>
+        <router-view />
       </transition>
     </div>
 

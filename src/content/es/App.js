@@ -1,5 +1,9 @@
 export default {
   header: {
+    logo: {
+      highlight: 'Conjunto de Herramientas',
+      normal: 'Para El Control Del Tabaco',
+    },
     home: {
       title: 'Inicio'
     },

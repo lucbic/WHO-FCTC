@@ -1,5 +1,9 @@
 export default {
   header: {
+    logo: {
+      highlight: 'Tobacco Control',
+      normal: 'Toolkit',
+    },
     home: {
       title: 'Home'
     },

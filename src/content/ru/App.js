@@ -1,5 +1,9 @@
 export default {
   header: {
+    logo: {
+      highlight: 'Инструментарий',
+      normal: 'по борьбе против табака',
+    },
     home: {
       title: 'На главную'
     },

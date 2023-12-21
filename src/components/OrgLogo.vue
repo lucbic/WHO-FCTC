@@ -37,7 +37,7 @@ export default {
     height: 100%;
 
     font-family: 'Inconsolata', monospace;
-    line-height: 16px;
+    line-height: 18px;
     font-size: 22px;
     font-weight: 500;
     color: #000;
