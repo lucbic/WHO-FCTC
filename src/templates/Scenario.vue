@@ -1,35 +1,26 @@
 <template>
 	<div id="home-page">
 		<div class="p40" style="margin:80px 0">
-		    <div class="container h_scenarios">
-		    	<div class="row">
-		    		<br>
-		    		<br>
-		    		<div class="col-xs-4 text-center">
-		    			<router-link to="/scenario/1">
-	              			<img src="../assets/img/home_s2_1.png" alt="" />
-			    			<h3>Scenario 1</h3>
-			    			<p>Healthcare Cost Recovery Reform</p>
-			    		</router-link>
-		    		</div>
-		    		<div class="col-xs-4 text-center">
-		    			<router-link to="/scenario/2">
-	              			<img src="../assets/img/home_s2_2.png" alt="" />
-			    			<h3>Scenario 2</h3>
-			    			<p>Access to Justice on a<br/>Collective+Individual Basis</p>
-			    		</router-link>
-		    		</div>
-		    		<div class="col-xs-4 text-center">
-		    			<router-link to="/scenario/3">
-	              			<img src="../assets/img/home_s2_3.png" alt="" />
-			    			<h3>Scenario 3</h3>
-			    			<p>Public Interest Litigation</p>
-			    		</router-link>
-		    		</div>
-		    	</div>
+			<div class="container h_scenarios">
+				<div class="row">
+					<br/>
+					<br/>
+					<div
+						v-for="scenario in scenarios"
+						:key="scenario.id"
+						class="col-xs-4 text-center"
+					>
+						<router-link :to="scenario.link">
+							<img :src="scenario.img" alt="" />
+
+							<h3>{{ scenario.title }}</h3>
+
+							<p v-html="scenario.description" />
+						</router-link>
+					</div>
+				</div>
 			</div>
 		</div>
-
 		
 		<div class="pop-cover" :class="{visible:showpop}">
 			
@@ -85,19 +76,55 @@
 
 <script>
 export default {
-	name: 'app',
+	name: 'Scenario',
+
 	data () {
 		return {
 		  showpop: false,
 		  popq: 1,
+			images: { one: '', two: '', three: '' }
 		}
 	},
-  	methods: {
-	},
-	computed: {
 
+	computed: {
+		isArabic () {
+			return this.$i18n.locale === 'ar';
+		},
+
+		scenarios () {
+			const scenarios = [
+				{
+					id: 1,
+					title: this.$t('scenario.first.title'),
+					description: this.$t('scenario.first.description'),
+					img: this.images.one,
+					link: '/scenario/1'
+				},
+				{
+					id: 2,
+					title: this.$t('scenario.second.title'),
+					description: this.$t('scenario.second.description'),
+					img: this.images.two,
+					link: '/scenario/2'
+				},
+				{
+					id: 3,
+					title: this.$t('scenario.third.title'),
+					description: this.$t('scenario.third.description'),
+					img: this.images.three,
+					link: '/scenario/3'
+				}
+			]
+
+			return this.isArabic ? scenarios.reverse() : scenarios;
+		}
 	},
-	created: function () {
+
+	async created () {
+		this.images.one = (await import('../assets/img/home_s2_1.png')).default
+		this.images.two = (await import('../assets/img/home_s2_2.png')).default
+		this.images.three = (await import('../assets/img/home_s2_3.png')).default
+
 	  this.$parent.$emit('scrollup', 'test');
 	}
 }
